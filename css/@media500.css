@@ -1,0 +1,30 @@
+@media screen and ( max-width:500px){
+
+    .filter-options select {
+        font-size: 8pt;
+        min-width: 20px;
+        max-width: 120px;
+    width: 120px;
+      }
+
+      nav h1 a {
+          
+        font-size: 10pt; 
+        
+      }
+
+      .filter-options h2 {
+  font-size: 8pt;
+  margin: 0px 3px;
+      }
+
+      #footer {
+   font-size: 8pt;
+      }
+
+      #restaurants-list li 
+{
+  margin: auto;
+}
+
+}
