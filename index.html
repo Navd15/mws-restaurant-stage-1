@@ -2,6 +2,10 @@
 <html>
 
 <head>
+ 
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
   <meta name="viewport" content="width=device-width,initial-scale=1.0" >
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
@@ -45,12 +49,15 @@
     <div>
       Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.</div>
     </footer>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibmF2ZDE1IiwiYSI6ImNqaWJtbW14dDA3aTgzdnFrN3RwcXhhbzYifQ.vBZwbAXdPCMhDdeExbhJBQ';
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10'
+        });
+        </script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBLXct6Bb3rUIoQSR6p0YzssHhgYFZgTA&libraries=places&callback=initMap"></script>
-
-
-  
 
 </body>
 
