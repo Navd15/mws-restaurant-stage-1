@@ -48,9 +48,10 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   background-color: #f3f3f3;
 }
 #footer {
+ 
   background-color: #444;
   color: #aaa;
-  font-size: 10pt;
+  font-size: 9pt;
   max-height: 30px;
   letter-spacing: 1px;
   padding: 20px;
@@ -68,12 +69,12 @@ nav {
 }
 
 nav h1 {
-  padding-top: 25px;
+  padding-top: 2%;
   max-width: 100%;
 }
 nav h1 a {
   color: #fff;
-  font-size: 14pt; 
+  font-size: 14pt;
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
@@ -141,15 +142,15 @@ nav h1 a {
   margin: 0px 20px;
 }
 .filter-options select {
+  border-radius: 3px;
   background-color: white;
   border: 1px solid #fff;
   font-family: Arial,sans-serif;
-  font-size: 11pt;
+  font-size: 1vw;
   max-width: 100px;
-  width: fit-content;
-  height: 35px;
+  width:auto;
   letter-spacing: 0;
-  margin: 10px;
+  margin-top:10px;
   padding: 0 10px;
 }
 
@@ -157,19 +158,21 @@ nav h1 a {
 
 #restaurants-list {
   background-color: #ffffff;
-  display:flow-root;
+  display:flex;
+  flex-wrap: wrap;
   padding: 30px 15px 60px;
 
 }
 
 #restaurants-list li 
 
-{display: inline-table;
-   width: calc(80% - 10px);
+{display: block;
+   width:100%;
+   margin-left: auto;
+   margin-right: auto;
    padding: 10px; 
-   max-width: calc(30% - 10px);
-   float: left; 
   margin-top:10px;
+  max-width: 22%;
   text-align: center;
   background-color: #fff;
   border: 2px solid #ccc;
@@ -203,7 +206,7 @@ nav h1 a {
 #restaurants-list p {
   color:black;
   margin: 0;
-  font-size: 11pt;
+  font-size: 1vw;
 }
 #restaurants-list li a {
   background-color: orange;
@@ -212,7 +215,7 @@ nav h1 a {
   display: inline-block;
   font-size: 10pt;
   margin: 15px 0 0;
-  padding: 8px 30px 10px;
+  padding: 8px 10px 10px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -240,7 +243,7 @@ nav h1 a {
   width: 100%;
 }
 .inside #footer {
-font-size:1.3vw;
+font-size:0.8vw;
   padding: 20px 0px ;
   position: unset;
   width: 50%;
