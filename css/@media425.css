@@ -93,17 +93,110 @@ height: 50px;
     max-width: 100%;
     text-transform: uppercase;
 }
-  .inside #maincontent {
-    display: flex;
-    flex-wrap: wrap;
+
+
+/* Restraunt info page css */
+
+   #maincontent {
+    display: flex !important;
+    flex-flow:column !important;
   }
-  #map-container {
+
+
+  .inside #map-container {
     width: 100%;
-    height: 25%;
+    position: absolute;
+    height:12%;
+    z-index: 0;
+    top:3.5%;
   }
+
+  .inside #map {
+    z-index: 0;
+    position: relative;
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+}
+
+#reviews-container h2 {
+  font-size: 18pt;
+}
+#breadcrumb li {
+  font-size: 15pt;
+}
+#breadcrumb {
+width: 100%;
+
+}
+
+#info-container{
+  margin-top: 58%;
+  /* top: 127px; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* position: inherit; */
+}
+
+#restaurant-img {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  max-width: 100%;
+}
   #restaurant-container {
     width: 100%;
   }
+
+  #restaurant-hours {
+    text-align: center;
+    margin-left: auto;
+    color: #666;
+    margin-right: auto;
+}
+#restaurant-hours td{
+ font-size: 14pt;
+}
+
+  #reviews-container {
+    width:100%;
+}
+#restaurant-cuisine {
+  background-color: #333;
+  color: #ddd;
+  font-size: 20pt;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  letter-spacing: 10px;
+  padding: 2px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: calc(100% - 20px);
+}
+#restaurant-address {
+  color: black;
+  text-align: center;
+  /* display: block; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
+#reviews-list li p {
+  font-size: 17pt;}
+
+  .inside #footer {
+    font-size: 11pt;
+    padding: 20px 0px;
+    /* position: unset; */
+    width: 100%;
+}
 }
 
 
