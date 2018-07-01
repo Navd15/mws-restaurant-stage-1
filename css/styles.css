@@ -63,13 +63,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 nav {
   box-shadow: 0px 1px 10px #404242;
   width: 100%;
-  height: 80px;
+  height: 60px;
   text-align: center;
   background-color: #252831;
 }
 
 nav h1 {
-  padding-top: 2%;
+  padding-top: 1%;
   max-width: 100%;
 }
 nav h1 a {
@@ -78,6 +78,11 @@ nav h1 a {
   font-weight: 200;
   letter-spacing: 10px;
   text-transform: uppercase;
+}
+
+#info-container{
+  width:50%;
+  margin-top: 90px;
 }
 #breadcrumb {
 
@@ -88,7 +93,7 @@ nav h1 a {
     position: fixed;
     display:block;
     margin: 0;
-    top:79px;
+    top:60px;
     background-color:#eeeeef;
  width:calc(50% - 10px);
 }
@@ -233,7 +238,7 @@ nav h1 a {
   height: 100%;
   position: fixed;
   right: 0;
-  top: 80px;
+  top: 60px;
   width: 50%;
 }
 .inside #map {
@@ -251,9 +256,10 @@ font-size:0.8vw;
 #restaurant-name {
   color: #f18200;
   font-family: Arial,sans-serif;
-  font-size: 1vw;
+  font-size: 12pt;
   font-weight: 200;
   top:78px;
+  text-align: center;
   letter-spacing: 0;
   margin: 15px 0 30px;
   text-transform: uppercase;
@@ -263,8 +269,8 @@ font-size:0.8vw;
   padding-left: 10px;
   padding-right: 10px;
   width:80%;
-  margin-top:109px;
   display:block;
+  margin-top: auto;
   margin-left: auto;
   margin-right:auto;
   border-top-left-radius: 30px;
@@ -290,7 +296,7 @@ font-size:0.8vw;
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  width: 50%;
+  width: 100%;
 }
 #reviews-container {
   padding: 0px 0px 30px;  
@@ -318,7 +324,9 @@ font-size:0.8vw;
   color: #666;
 }
 #restaurant-hours{
-  margin-left: 20px;
+  margin-right: auto;
+  text-align: center;
+  margin-left: auto;
   color: #666;
 }
 
@@ -328,7 +336,7 @@ li #customerName {
   border-top-width: 0px !important;
   border-left-width: 0px !important;
   border-right-width: 0px !important;
-  font-size: 1.3vw;
+  font-size: 11pt;
   border: 2px solid #f3f3f3;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -343,14 +351,14 @@ color:white !important;
 }
 
 #date p{
-  font-size:1vw;
+  font-size:11pt;
   color: grey !important;
   margin-right: -20%  !important;;
   float: right;
   
 }
 #rating{
-  font-size:1vw;
+  font-size:8pt;
   text-transform: uppercase;
 margin-left:20px !important;
   display: inline-block;
@@ -380,7 +388,7 @@ border-radius: 5px;
   overflow: hidden;
 }
 #commment{ 
-  font-size: 1.3vw;
+  font-size: 10pt;
   color: #b9b9b8;
   padding-left:20px  !important;;
   padding-right: 20px  !important;; }

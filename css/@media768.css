@@ -79,15 +79,5 @@
         text-transform: uppercase;
     }
   
-    .inside #maincontent {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    #map-container {
-      width: 100%;
-      height: 25%;
-    }
-    #restaurant-container {
-      width: 100%;
-    }
+  
   }

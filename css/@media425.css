@@ -102,13 +102,16 @@ height: 50px;
     flex-flow:column !important;
   }
 
+  #restaurant-name {
+font-size: 10pt;
 
+  }
   .inside #map-container {
+    height: 4%;
     width: 100%;
     position: absolute;
-    height:12%;
     z-index: 0;
-    top:3.5%;
+    margin-top: 8%;
   }
 
   .inside #map {
@@ -120,18 +123,19 @@ height: 50px;
 }
 
 #reviews-container h2 {
-  font-size: 18pt;
+  font-size: 10pt;
 }
 #breadcrumb li {
-  font-size: 15pt;
+  font-size: 10pt;
 }
 #breadcrumb {
+  top:50px;
 width: 100%;
 
 }
 
 #info-container{
-  margin-top: 58%;
+  margin-top: 390px;
   /* top: 127px; */
   width: 100%;
   display: flex;
@@ -161,7 +165,7 @@ width: 100%;
     margin-right: auto;
 }
 #restaurant-hours td{
- font-size: 14pt;
+ font-size: 10pt;
 }
 
   #reviews-container {
@@ -170,7 +174,7 @@ width: 100%;
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 20pt;
+  font-size: 10pt;
   margin-left: auto;
   margin-right: auto;
   font-weight: 300;
@@ -189,10 +193,10 @@ width: 100%;
 }
 
 #reviews-list li p {
-  font-size: 17pt;}
+  font-size: 10pt;}
 
   .inside #footer {
-    font-size: 11pt;
+    font-size: 7pt;
     padding: 20px 0px;
     /* position: unset; */
     width: 100%;
@@ -205,6 +209,29 @@ width: 100%;
   nav h1 a {
     font-size: 7pt;
 }
+.inside #footer {
+  font-size: 5pt;
+}
 
 
 } 
+
+@media screen and ( max-width:375px){
+
+  nav h1 a {
+    font-size: 7pt;
+}
+.inside #footer {
+  font-size: 6pt;
+}
+td {
+  font-size: 8pt !important;
+}
+
+#rating{
+  font-size: 7pt !important;
+}
+
+
+} 
+

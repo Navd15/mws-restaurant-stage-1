@@ -17,10 +17,11 @@ initMap = () => {
       console.error(error);
     } else {
       self.newMap = L.map('map', {
-        center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
+        center: [restaurant.latlng.lat, restaurant.latlng.lng],
         scrollWheelZoom: false
       });
+      L.pa
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1IjoibmF2ZDE1IiwiYSI6ImNqaWJtbW14dDA3aTgzdnFrN3RwcXhhbzYifQ.vBZwbAXdPCMhDdeExbhJBQ',
         maxZoom: 18,
