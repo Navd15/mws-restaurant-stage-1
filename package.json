@@ -1,0 +1,25 @@
+{
+  "name": "mws_stage_1",
+  "version": "1.0.0",
+  "description": "Review App",
+  "main": "none",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^2.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-responsive-images": "^1.10.1"
+  },
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "Navd15",
+  "license": "ISC",
+  "dependencies": {
+    "grunt-cli": "^1.2.0"
+  }
+}
