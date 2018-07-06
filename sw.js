@@ -7,9 +7,6 @@ self.addEventListener('install',(event)=>{
             "/css/styles.css",
              "/css/@media768.css", 
              "/css/@media425.css",
-             "/js/dbhelper.js",
-             "/js/main.js",
-            "/js/restaurant_info.js",
              "/restaurant.html",
              "/favicon.ico",
             // "/img/1.jpg",
@@ -30,9 +27,10 @@ self.addEventListener('install',(event)=>{
   self.addEventListener('fetch',(event)=>{
     var requestUrl = new URL(event.request.url);
 event.respondWith(caches.match(event.request).then((response)=>{
-    if(response) return response;
+    if(response)
+     return response
 
-    return fetch(event.request).then((resonse)=>{
+    return fetch(event.request).then((response)=>{
 
         return caches.open(cacheName).then((cache)=>{
             cache.put(event.request, response.clone());
