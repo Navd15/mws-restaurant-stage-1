@@ -159,11 +159,15 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const pic = document.createElement('picture');
-  
-  const img=document.createElement('img');
+// createPictureScource(pic,restaurant.id);
+mainjs.createPictureScource(pic,restaurant.id)  
+const img=document.createElement('img');
+
   img.className = 'restaurant-img';
+  img.alt=`${restaurant.name} restaurant`;
   img.srcset=DBHelper.imageUrlForRestaurant(restaurant);
   pic.append(img);
+
   li.append(pic);
 
   const name = document.createElement('h1');
@@ -207,6 +211,8 @@ navigator.serviceWorker.register('/sw.js',{
 
 }
 
+
+
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
@@ -218,3 +224,22 @@ navigator.serviceWorker.register('/sw.js',{
   });
 } */
 
+class mainjs{
+  static createPictureScource(pic,id){
+    const src_small=document.createElement('source');
+    const src_medium=document.createElement('source');
+     const src_large=document.createElement('source');
+    src_small.media="(max-width: 480px)";
+    src_small.srcset=`/img/comp/${id}-small.jpg`;
+    src_medium.media="(max-width: 780px)";
+    src_medium.srcset=`/img/comp/${id}-medium.jpg`;
+  
+   src_large.media="(max-width: 1080px)";
+   src_large.srcset=`/img/comp/${id}-large.jpg`;
+   pic.append(src_small);
+   pic.append(src_medium); 
+   pic.append(src_large) ;
+  
+   
+  }
+}
