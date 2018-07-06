@@ -1,0 +1,9 @@
+{
+    "background_color": "#fdfdfd",
+    "description": "Review your favourite restaurant",
+    "lang": "en-US",
+    "display": "standalone",
+    "name": "Restaurant Reviews",
+    "orientation": "portrait-primary",
+    "theme_color": "aliceblue"
+  }
