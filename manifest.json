@@ -1,9 +1,27 @@
 {
-    "background_color": "#fdfdfd",
-    "description": "Review your favourite restaurant",
-    "lang": "en-US",
-    "display": "standalone",
-    "name": "Restaurant Reviews",
-    "orientation": "portrait-primary",
-    "theme_color": "aliceblue"
-  }
+  "name": "Restaurant Reviews",
+  "short_name": "Restaurant",
+  "background_color": "#3367D6",
+  "description": "Review your favourite restaurant",
+  "lang": "en-US",
+  "icons":[{
+ "src":"img/manifest/128X128.png",
+ "type":"image/png",
+"sizes":"128x128"
+  },
+{
+    "src":"img/manifest/256X256.png",
+    "type":"image/png",
+   "sizes":"256x256"
+     },
+     {
+      "src":"img/manifest/512X512.png",
+      "type":"image/png",
+     "sizes":"512x512"
+       }
+],
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "aliceblue",
+  "start_url":"index.html"
+}
