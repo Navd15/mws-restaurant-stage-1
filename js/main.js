@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
   registersw();
-  // added  
+
 });
 
 /**
@@ -159,8 +159,7 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const pic = document.createElement('picture');
-// createPictureScource(pic,restaurant.id);
-mainjs.createPictureScource(pic,restaurant.id)  
+mainjs.createPictureSource(pic,restaurant.id)  
 const img=document.createElement('img');
 
   img.className = 'restaurant-img';
@@ -222,25 +221,24 @@ navigator.serviceWorker.register('/sw.js',{
       window.location.href = marker.url
     });
     self.markers.push(marker);
-  });
+  }); 
 } */
 
 class mainjs{
-  static createPictureScource(pic,id){
-    const src_small=document.createElement('source');
-    const src_medium=document.createElement('source');
-     const src_large=document.createElement('source');
+  static createPictureSource(pic,id){
+    let src_small=document.createElement('source');
+    let src_medium=document.createElement('source');
+     let src_large=document.createElement('source');
     src_small.media="(max-width: 480px)";
     src_small.srcset=`/img/comp/${id}-small.jpg`;
     src_medium.media="(max-width: 780px)";
     src_medium.srcset=`/img/comp/${id}-medium.jpg`;
   
-   src_large.media="(max-width: 1080px)";
+   src_large.media="(max-width: 2000px)";
    src_large.srcset=`/img/comp/${id}-large.jpg`;
    pic.append(src_small);
    pic.append(src_medium); 
    pic.append(src_large) ;
-  
-   
+
   }
 }
