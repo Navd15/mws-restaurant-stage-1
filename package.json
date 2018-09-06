@@ -4,11 +4,10 @@
   "description": "Review App",
   "main": "none",
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-nodeunit": "^2.0.0",
-    "grunt-contrib-uglify": "^3.3.0",
-    "grunt-responsive-images": "^1.10.1"
+    "browser-sync": "^2.24.7",
+    "grunt-responsive-images": "^1.10.1",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.1"
   },
   "scripts": {
     "test": "none"
@@ -19,7 +18,12 @@
   },
   "author": "Navd15",
   "license": "ISC",
+  
   "dependencies": {
-    "grunt-cli": "^1.2.0"
+    "gulp-concat": "^2.6.1",
+    "gulp-image": "^4.3.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jasmine-phantom": "^3.0.0",
+    "gulp-responsive-images": "0.0.3"
   }
 }
