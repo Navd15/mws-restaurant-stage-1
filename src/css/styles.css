@@ -3,7 +3,6 @@
   text-shadow: #333; }
 
 html {
-  position: relative;
   min-height: 100%; }
 
 body, td, th, p {
@@ -47,7 +46,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
 #footer {
   background-color: #444;
-  color: #aaa;
+  color: #fff;
   font-size: 8pt;
   max-height: 30px;
   letter-spacing: 3px;
@@ -122,7 +121,7 @@ nav h1 a {
   display: block;
   width: 100%;
   height: 50px;
-  background-color: #3397DB;
+  background-color: #191919;
   align-items: center; }
 
 .filter-options h2 {
@@ -192,7 +191,7 @@ nav h1 a {
   /* max-width: 300px ; */ }
 
 #restaurants-list li h1 {
-  color: #f18200;
+  color: #920000;
   font-family: Arial,sans-serif;
   font-size: 100%;
   font-weight: 200;
@@ -207,7 +206,7 @@ nav h1 a {
   font-size: 100%; }
 
 #restaurants-list li a {
-  background-color: orange;
+  background-color: black;
   color: #fff;
   display: inline-block;
   font-size: 90%;
@@ -217,6 +216,17 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
   box-shadow: 0 0 5px #000000b0; }
+
+#restaurants-list .like {
+  cursor: pointer;
+  margin-top: 20px;
+  float: right;
+  background-repeat: round;
+  width: 20px;
+  height: 20px; }
+
+#restaurants-list form {
+  display: inline; }
 
 #restaurants-list li a:focus,
 #restaurants-list li a:hover {
@@ -250,7 +260,7 @@ nav h1 a {
   width: 50%; }
 
 #restaurant-name {
-  color: #f18200;
+  color: #0275d8;
   font-family: Arial,sans-serif;
   font-size: 12pt;
   font-weight: 200;
@@ -298,7 +308,7 @@ nav h1 a {
   padding: 0px 0px 30px; }
 
 #reviews-container h2 {
-  color: #f58500;
+  color: #07499f;
   font-weight: 300;
   margin-left: 20px;
   text-align: center;
@@ -341,11 +351,18 @@ li #customerName {
   width: calc(75% - 0px);
   color: white !important; }
 
-#date p {
+#date #createdAt {
   font-size: 11pt;
   color: grey !important;
   margin-right: -20%  !important;
   float: right; }
+
+#menu {
+  cursor: pointer;
+  display: inline-block;
+  background-repeat: round;
+  height: 15px;
+  width: 20px; }
 
 #rating {
   font-size: 8pt;
@@ -354,7 +371,7 @@ li #customerName {
   display: inline-block;
   padding: 5px;
   color: white !important;
-  background-color: #fba530;
+  background-color: #000000;
   border-radius: 5px; }
 
 #reviews-list li p {
@@ -369,7 +386,6 @@ li #customerName {
   background-color: #fff;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  display: inline-block;
   max-width: 100%;
   list-style-type: none;
   overflow: hidden; }
@@ -379,3 +395,72 @@ li #customerName {
   color: #b9b9b8;
   padding-left: 20px  !important;
   padding-right: 20px  !important; }
+
+/* Context menu css */
+#editOpt, #delOpt {
+  cursor: pointer;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
+  background-repeat: round; }
+
+#addReview {
+  width: 90%;
+  margin: auto; }
+
+/*Makes all stars black . 
+  This will be reaplced by filled class when stars will be selected
+  */
+.open {
+  background-image: url("/img/icons/starBlack.png"); }
+
+.filled {
+  background-image: url("/img/icons/starGold.png"); }
+
+/* Permanent to all star divs */
+.rating {
+  cursor: pointer;
+  background-repeat: round;
+  height: 15px;
+  width: 15px; }
+
+#reviewContainer {
+  clear: both;
+  width: 95%; }
+
+#revSubmit {
+  cursor: pointer;
+  max-width: 100%;
+  margin-top: 10px;
+  display: flex !important; }
+
+#reviewContainer label {
+  color: black !important; }
+
+#reviewContainer input {
+  padding: 2px;
+  min-height: 20px;
+  border-width: 1px;
+  border-style: inset;
+  border-radius: 5px 0px  5px 0px;
+  clear: both;
+  width: 100%; }
+
+#revRatingInput {
+  margin-top: 10px;
+  max-width: 15%;
+  text-align: center; }
+
+#reviewContainer textarea {
+  border-style: inset;
+  border-width: 1px;
+  border-radius: 5px 0px  5px 0px;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%; }
+
+/*  */
+.leaflet-bottom, .leaflet-right {
+  display: none !important; }

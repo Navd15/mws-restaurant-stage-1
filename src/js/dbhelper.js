@@ -38,7 +38,8 @@ class DBHelper {
     fetch("http://localhost:1337/restaurants").then((resolve) => {
       if (resolve.status == 200) {
         resolve.json().then((result) => {
-          callback(null, result);
+
+          callback(null, result);  
 
         })
 
@@ -60,19 +61,44 @@ class DBHelper {
 
   }
 
+  /* Get restaurant review by the id same as restaurant */
+
+  static fetchRestaurantReviewById(id){
+    return new Promise((resolve,reject)=>{
+      fetch(`http://localhost:1337/reviews/?restaurant_id=${id}`).then(res=>{
+        if (res.status==200){
+        res.json().then(final=>{
+          resolve(final)
+        })
+        }
+        else
+        resolve(null)
+      })
+    })
+
+
+
+  }
 
   /**
    * Fetch a restaurant by its ID.
    */
+
   static fetchRestaurantById(id, callback) {
     // fetch all restaurants with proper error handling.
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {
         callback(error, null);
       } else {
-        const restaurant = restaurants.find(r => r.id == id);
+        let restaurant = restaurants.find(r => r.id == id);
         if (restaurant) { // Got the restaurant
-          callback(null, restaurant);
+          DBHelper.fetchRestaurantReviewById(id).then(reviews=>{
+            restaurant['reviews']=reviews
+            // console.log(restaurant);
+            callback(null, restaurant);
+
+          })
+      
         } else { // Restaurant does not exist in the database
           callback('Restaurant does not exist', null);
         }

@@ -20,8 +20,6 @@
     width: 70%;
     max-width: 85%; }
   #footer {
-    background-color: #444;
-    color: #aaa;
     font-size: 6pt;
     max-height: 30px;
     letter-spacing: 1px;
@@ -141,4 +139,11 @@
   #info-container {
     margin-top: 280px; }
   .filter-options h2 {
-    display: none; } }
+    display: none; }
+  #date #createdAt {
+    font-size: 10pt; }
+  #editOpt, #delOpt {
+    height: 11px;
+    width: 11px;
+    margin-right: 3px;
+    margin-left: 5px; } }
