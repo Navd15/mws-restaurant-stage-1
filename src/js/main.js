@@ -105,7 +105,7 @@ initMap = () => {
  * Update page and map for current restaurants.
  */
 updateRestaurants = () => {
-    console.log('called');
+  
 
     const cSelect = document.getElementById('cuisines-select');
     const nSelect = document.getElementById('neighborhoods-select');
@@ -193,8 +193,6 @@ createRestaurantHTML = (restaurant) => {
     if (restaurant.is_favorite === true) {
         hoverTitle = "Remove from favourites";
     }
-    // console.log(hoverTitle);
-
     like.title = hoverTitle;
     const alternateVal = !restaurant.is_favorite;
     const apiHelper = APIHelper;

@@ -37,7 +37,7 @@ class APIHelper {
 
     static apiPUT(url, data, options = null, extra) {
         return new Promise((resolve, reject) => {
-            
+
             if (typeof url == "string") {
                 url = new URL(url);
             }
@@ -238,55 +238,60 @@ class DB {
 
 }
 
-function tryFailedReq(callback) {
-    const db = indexedDB.open('rest-cache-v2', 1);
-         
-        db.onsuccess = (event) => {
-            const no = event.target.result.objectStoreNames.length;
-         
-            if (no > 1) {
-                const trx = event.target.result.transaction('pendingStuff', 'readwrite').objectStore('pendingStuff');
-                trx.openCursor().onsuccess = (event) => {
-                    const cursor = event.target.result;
-                    const header = new Headers({ 'content-type': 'application/json' })
-                    
-                    if (cursor) {
-                        if (!this.last_key) {
-                            this.last_key = cursor.value.body.restaurant_id;
-                        }
-                        fetch(new URL(cursor.value.url), { method: 'POST', headers: header, body: JSON.stringify(cursor.value.body) }).then(res => {
+// function tryFailedReq(callback) {
+//     const db = indexedDB.open('rest-cache-v2', 1);
 
-                            if (res.status == 201) {
-                                DB.delete('rest-cache-v2', 'pendingStuff', cursor.key).then(res => {
+//         db.onsuccess = (event) => {
+//             const no = event.target.result.objectStoreNames.length;
 
-                                });
-                            }
-                        })
-                        cursor.continue();
-                    }
-                    else {
-                        callback();
+//             if (no > 1) {
+//                 const trx = event.target.result.transaction('pendingStuff', 'readwrite').objectStore('pendingStuff');
+//                 trx.openCursor().onsuccess = (event) => {
+//                     const cursor = event.target.result;
+//                     const header = new Headers({ 'content-type': 'application/json' })
 
-                    }
-                }
+//                     if (cursor) {
+//                         if (!this.last_key) {
+//                             this.last_key = cursor.value.body.restaurant_id;
+//                         }
+//                         fetch(new URL(cursor.value.url), { method: 'POST', headers: header, body: JSON.stringify(cursor.value.body) }).then(res => {
 
-            }
-         
-        }
+//                             if (res.status == 201) {
+//                                 DB.delete('rest-cache-v2', 'pendingStuff', cursor.key).then(res => {
 
-}
+//                                 });
+//                             }
+//                         })
+//                         cursor.continue();
+//                     }
+//                     else {
+//                         callback();
 
-(function s() {
-    navigator.connection.onchange = (event) => {
-        if (event.currentTarget.downlink > 0) {
-            tryFailedReq(()=>{
-                DB.delete('rest-cache-v2', 'jsonData', this.last_key).then(res => {
-                    location.reload();
-                })
-            })
-                
-      
-        }
-    }
+//                     }
+//                 }
 
-})()
+//             }
+
+//         }
+
+// }
+
+// (function s() {
+//     navigator.connection.onchange = (event) => {
+//           if (event.currentTarget.downlink==0){
+
+
+//           }
+
+//         if (event.currentTarget.downlink > 0) {
+//             tryFailedReq(()=>{
+//                 DB.delete('rest-cache-v2', 'jsonData', this.last_key).then(res => {
+//                     location.reload();
+//                 })
+//             })
+
+
+//         }
+//     }
+
+// })()

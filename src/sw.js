@@ -3,7 +3,7 @@ const ver = 1;
 const port = 1337; /* Change it according to json server  */
 
 self.addEventListener('install', (event) => {
-    event.waitUntil( caches.open(cacheName).then((cache) => {
+    event.waitUntil(caches.open(cacheName).then((cache) => {
         return cache.addAll([
             "img/icons/starGold.png",
             "img/icons/starBlack.png",
@@ -18,7 +18,7 @@ self.addEventListener('install', (event) => {
             "css/styles.css",
             "css/@media768.css",
             "css/@media480.css"
-            
+
         ])
 
     })
@@ -31,8 +31,8 @@ self.addEventListener('fetch', (event) => {
 
     /*Only save and get json requests from indexDb */
 
-    if (requestUrl.port == port && event.request.method == 'GET') {
-        
+    if (requestUrl.port == port && event.request.method == 'GET'
+        && (requestUrl.pathname === '/reviews/' || requestUrl.pathname === '/restaurants')) {
         url = requestUrl.href;
         event.respondWith(
             result().then(res => {
@@ -48,7 +48,7 @@ self.addEventListener('fetch', (event) => {
                 return response;
             }
             return fetch(event.request).then((response) => {
-               
+
 
                 if (response.status == 404) {
                     // show error.html 
@@ -70,6 +70,53 @@ self.addEventListener('fetch', (event) => {
         }))
 
 })
+
+self.addEventListener('sync', function (event) {
+
+    if (event.tag == 'pendingStuff') {
+        event.waitUntil(tryFailedReq());
+    }
+});
+
+function tryFailedReq() {
+    return new Promise((resolve, reject) => {
+        const db = indexedDB.open('rest-cache-v2', 1);
+
+        db.onsuccess = (event) => {
+            const no = event.target.result.objectStoreNames.length;
+            const dbTrx = event.target.result;
+            if (no > 1) {
+                const trx = event.target.result.transaction('pendingStuff', 'readwrite').objectStore('pendingStuff');
+                trx.getAll().onsuccess = (event) => {
+                    let results = event.srcElement.result;
+                    const header = new Headers({
+                        'content-type': 'application/json'
+                    })
+                    for (let i in results) {
+                        fetch(new URL(results[i].url), {
+                            method: 'POST',
+                            headers: header,
+                            body: JSON.stringify(results[i].body)
+                        }).then(res => {
+                            if (res.status == 201) {
+                                dbTrx.transaction('jsonData', 'readwrite').objectStore('jsonData').delete(results[i].body.restaurant_id);
+                            }
+                        }, rej => {
+                            reject();
+                        });
+
+                    }
+                    trx.clear();
+                    resolve();
+                }
+
+            }
+
+        }
+
+    })
+
+}
 
 
 self.addEventListener('activate', (event) => {
@@ -100,21 +147,23 @@ or if you want to burn out your brain juice..continoue -->
 
 const result = () => {
     return new Promise((resolve, reject) => {
-    let regex = new RegExp('http:\/\/localhost:1337\/reviews\/');
-    let jsonDb = indexedDB.open(idbName, ver);
-        jsonDb.onupgradeneeded=(event) => { /* This handler will be called when there is need to upgrade the db  */
-       
+        let regex = new RegExp('http:\/\/localhost:1337\/reviews\/');
+        let jsonDb = indexedDB.open(idbName, ver);
+        jsonDb.onupgradeneeded = (event) => { /* This handler will be called when there is need to upgrade the db  */
+
             let objectStore;
             let db = event.target.result;
 
-            if(event.oldVersion==0) {
-                    objectStore = db.createObjectStore('jsonData', {
-                        keyPath: 'id'
-                    });
+            if (event.oldVersion == 0) {
+                objectStore = db.createObjectStore('jsonData', {
+                    keyPath: 'id'
+                });
 
-                    db.createObjectStore('pendingStuff',{ autoIncrement : true });
+                db.createObjectStore('pendingStuff', {
+                    autoIncrement: true
+                });
             }
-    
+
             objectStore.transaction.oncomplete = (event) => {
 
                 let rid = 0;
@@ -123,8 +172,6 @@ const result = () => {
                     if (equalIndex > -1) {
                         rid = Number.parseInt(url.substr(equalIndex + 1))
 
-                    } else {
-                        rid = -(Number.parseInt(url.substr(url.lastIndexOf('/') + 1)));
                     }
                 }
 
@@ -142,8 +189,8 @@ const result = () => {
                                 jsonData: result
                             });
                             //Return data after adding it to db
- 
-           
+
+
                             /* Note: call to resolve can be made 
                             in res.onsuccess handler */
                             resolve(JSON.stringify(result));
@@ -165,17 +212,16 @@ const result = () => {
             let objectStore = db.transaction('jsonData', 'readonly').objectStore('jsonData');
             objectStore.transaction.oncomplete = (event) => {
 
-                let rid = 0;  /*  keyPath to search for in indexDb  */
+                let rid = 0; /*  keyPath to search for in indexDb  */
 
                 if (regex.exec(url) != null) {
                     const equalIndex = url.indexOf('=');
                     if (equalIndex > -1) {
-                        rid = Number.parseInt(url.substr(equalIndex+ 1))
+                        rid = Number.parseInt(url.substr(equalIndex + 1))
                     }
-                    else {
-                        rid = -(Number.parseInt(url.substr(url.lastIndexOf('/') + 1)));
-                    }
+
                 }
+
                 let tx = db.transaction('jsonData', 'readwrite').objectStore("jsonData");
                 let get = tx.get(rid);
                 get.onsuccess = event => {
@@ -213,7 +259,7 @@ const result = () => {
 /* Fetch data from URL  */
 const getjsonData = (url) => {
     return new Promise((resolve, reject) => {
-       return  fetch(url).then((res) => {
+        return fetch(url).then((res) => {
             if (res.status == 200) {
                 res.json().then((res) => {
                     resolve(res);

@@ -273,7 +273,7 @@ class Helper {
         function deleteComment() {
             const url = new URL(`http://localhost:1337/reviews/${id}`);
             APIHelper.api(url, 'DELETE', null, null, resid).then(res => {
-                location.reload()
+                location.reload();
             })
 
         }
@@ -285,14 +285,14 @@ class Helper {
             ele.addEventListener('click', (event) => {
                 fetch(`http://localhost:1337/reviews/${id}`)
                     .then(res => {
-                        if (res.status == 200)
+                        if (res.status == 200){
                             res.json().then(final => {
                                 Helper.fillUpdateForm(final);
                                 scrollTo({ 'top': document.getElementById('addReview').offsetTop - 100 });
 
                             })
-
-                    })
+                        }
+                    },(rej)=>{alert('You are currently offline.');})
 
 
             })
@@ -401,6 +401,7 @@ class Helper {
             const xtra = self.restaurant.id;
 
             const data = {
+
                 'restaurant_id':parseInt(self.restaurant.id),
                 "name": document.getElementById('userName').value,
                 "rating": parseInt(document.getElementById('revRatingInput').value),
